@@ -21,6 +21,7 @@ class QuoteService(
             throw RuntimeException("The request amount must be in 100s")
         }
         val lendersToBorrow = chepestLendersService.getLenderToBorrowFrom(requestedAmount, lenders)
+        println(lendersToBorrow)
         val newRate = rateCalculator.calcNewRate(requestedAmount, lendersToBorrow)
         val repayment = repaymentCalculator.calcMonthlyRepayment(requestedAmount, newRate, REPAYMENT_PERIOD_MONTHS)
         val totalRepayment = repayment * REPAYMENT_PERIOD_MONTHS
@@ -32,7 +33,7 @@ class QuoteService(
     }
 
     fun format(vaule: Double, places: Int): String {
-        return vaule.toBigDecimal().setScale(places, RoundingMode.UP).toString()
+        return vaule.toBigDecimal().setScale(places, RoundingMode.HALF_DOWN).toString()
     }
 
 
