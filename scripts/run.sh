@@ -1,8 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash -e
 
-ACCESS_TOKEN=$1
-docker network create \
- --subnet=172.18.0.0/16 \
- mynet
+./gradlew build
 
-docker run --net mynet --name bo -p 8080:8080 --env ACCESS_TOKEN=${ACCESS_TOKEN} thomasmillergb/github-repo-downloader:1.0.0
+java -jar build/libs/zopa-1.0.jar $1 $2

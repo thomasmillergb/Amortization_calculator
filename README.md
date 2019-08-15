@@ -1,4 +1,3 @@
-# Thomas Millers Base JavaKotlin Template
+To run the project
 
-
-This Project is a base template to be fork as a quick starter to get a project going.
+./scripts/run.sh ./src/test/resources/MarketDataforExercise-csv.csv 1000
